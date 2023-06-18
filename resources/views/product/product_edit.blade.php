@@ -31,6 +31,7 @@ Product Edit
                     @csrf
                     <div class="mb-3">
                         <label>Name Product</label>
+                        <input type="hidden" class="form-control" name="id" value="{{ $products->id }}">
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Nama" value="{{ $products->name }}">
                         @error('name')
                             <div class="alert alert-danger mt-2">
@@ -68,7 +69,7 @@ Product Edit
                         <label>Status</label>
                         <input type="text" class="form-control" name="status" value="Pending" value="{{ $products->status }}">
                     </div>
-                    <button type="submit" class="btn btn btn-primary" id="btn-submit" name="tambah">Save</button>
+                    <button type="submit" class="btn btn btn-primary" id="btn-submit">Save</button>
                     <button type="reset" class="btn btn-warning" name="reset">Reset</button>
                     <a href="{{ url('/product') }}" class="btn btn-secondary">Cancel</a>
                 </form>

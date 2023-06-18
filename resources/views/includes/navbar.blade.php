@@ -30,7 +30,7 @@
           <form action="{{ url('/logout') }}" method="post">
             @csrf
             <li class="nav-item">
-              <a href="{{ url('/logout') }}" class="btn btn-primary nav-link px-4 text-white">Sign In</a>
+              <a href="{{ url('/logout') }}" class="btn btn-primary nav-link px-4 text-white">Logout</a>
             </li>
         </form>
           @else

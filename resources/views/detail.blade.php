@@ -14,7 +14,7 @@ Detail Page
             <nav>
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="index.html">Home</a>
+                  <a href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="breadcrumb-item active">
                   <a href="">Product Details</a>
@@ -30,7 +30,8 @@ Detail Page
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mb-4" data-aos="zoom-in">
-            <img src="/images/product-couple1" class="w-100 main-image" alt="">
+            <img src="/photos/{{ $products->galleries->photos }}" class="photos photos-sm me-3" alt="user1">
+            {{-- <img src="/photos/{{ $products->galleries->photos }} class="w-100 main-image-sm me-3" alt=""> --}}
           </div>
         </div>
       </div>
@@ -41,12 +42,12 @@ Detail Page
         <div class="container">
           <div class="row">
             <div class="col-lg-6">
-              <h1>Sofa Ternyaman</h1>
-              <div class="owner">By Afif Dwi Sasonda</div>
-              <div class="price">$1,409</div>
+              <h1>{{ $products->name }}</h1>
+              {{-- <div class="owner">By Afif Dwi Sasonda</div> --}}
+              <div class="price">{{ $products->price }}</div>
             </div>
             <div class="col-lg-2" data-aos="zoom-in">
-              <a href="/cart.html" class="btn btn-success px-4 text-white btn-block mb-3">
+              <a href="#" class="btn btn-success px-4 text-white btn-block mb-3">
                 Add to Cart
               </a>
             </div>
@@ -59,23 +60,14 @@ Detail Page
           <div class="row">
             <div class="col-12 col-lg-12" style="text-align: justify;">
               <p>
-                The Nike Air Max 720 SE goes bigger than ever before with Nike's
-                tallest Air unit yet for unimaginable, all-day comfort. There's super
-                breathable fabrics on the upper, while colours add a modern edge.
-              </p>
-              <p>
-                Bring the past into the future with the Nike Air Max 2090, a bold look
-                inspired by the DNA of the iconic Air Max 90. Brand-new Nike Air
-                cushioning underfoot adds unparalleled comfort while transparent
-                mesh and vibrantly coloured details on the upper are blended with
-                timeless OG features for an edgy, modernised look.
+                {{$products->description}}
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="store-review">
+      {{-- <section class="store-review">
         <div class="container">
           <div class="row">
             <div class="col-12 col-lg-8 mt-3 mb-3">
@@ -113,7 +105,7 @@ Detail Page
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
     </div>
   </div>
 @endsection

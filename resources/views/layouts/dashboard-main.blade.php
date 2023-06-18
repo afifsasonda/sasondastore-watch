@@ -161,17 +161,11 @@
           </a>
         </li>
         <li class="nav-item">
-                <a class="nav-link " href="#">
+                <a class="nav-link " href="{{ url('/logout') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                       <i class="ni ni-collection text-info text-sm opacity-10"></i>
+                      <span class="nav-link-text ms-1">Logout</span>
                     </div>
-                    @auth
-                    <form action="{{ url('/logout') }}" method="POST">
-                        @csrf
-                        <span class="nav-link-text ms-1">Logout</span>
-                    </form>
-
-                    @endauth
                   </a>
           </li>
         @endif

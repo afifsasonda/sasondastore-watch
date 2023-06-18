@@ -26,11 +26,9 @@ class RegisterPageController extends Controller
         User::create([
             'name'=> $request->name,
             'email'=> $request->email,
-            // 'roles' => $request->roles,
-            // 'avatar' => $request->avatar,
             'password' => Hash::make($request->password)
         ]);
 
-        return redirect('/login')->with('Sukses Registrasi Akun');
+        return redirect()->route('/login')->with('Sukses Registrasi Akun');
     }
 }

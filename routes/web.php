@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/categories',[CategoryController::class,'index'])->name('categories');
-Route::get('/detail',[DetailController::class,'index'])->name('detail');
+Route::get('/detail/{id}',[DetailController::class,'index'])->name('detail');
 
 // dashboard
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
@@ -60,6 +60,9 @@ Route::get('/product-gallery-create',[ProductGalleryController::class,'create'])
 Route::post('/product-gallery-create-post',[ProductGalleryController::class,'store']);
 Route::get('/product-gallery-delete/{id}',[ProductGalleryController::class,'delete']);
 
+// slider
+// Route::get('/slider'[Slider]);
+
 // login
 Route::get('/login',[LoginPageController::class,'index']);
 Route::post('/login',[LoginPageController::class,'authenticate']);
@@ -69,7 +72,7 @@ Route::get('/register',[RegisterPageController::class,'index']);
 Route::post('/register-post',[RegisterPageController::class,'store']);
 
 // logout
-Route::post('/logout',[LoginPageController::class,'logout']);
+Route::get('/logout',[LoginPageController::class,'logout']);
 
 
 // Register

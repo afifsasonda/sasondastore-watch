@@ -5,6 +5,7 @@ Product Pages
 @endsection
 
 @section('content')
+{{-- {{ $products }} --}}
 <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">
@@ -44,7 +45,7 @@ Product Pages
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="" class="avatar avatar-sm me-3" alt="user1">
+                            <img src="/photos/{{ $product->galleries->photos }}" class="avatar avatar-sm me-3" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{ $product->name }}</h6>

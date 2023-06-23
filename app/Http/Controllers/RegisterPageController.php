@@ -29,6 +29,6 @@ class RegisterPageController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return redirect()->route('/login')->with('Sukses Registrasi Akun');
+        return redirect('/login')->with('Sukses Registrasi Akun');
     }
 }

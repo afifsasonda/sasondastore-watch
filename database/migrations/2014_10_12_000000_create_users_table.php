@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
 
-            $table->string('roles')->default('USER');
+            $table->string('roles')->default('User');
             $table->string('avatar');
             $table->longText('alamat');
 

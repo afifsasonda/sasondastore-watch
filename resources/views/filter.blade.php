@@ -13,23 +13,21 @@ Home Page
           <div class="col-lg-12" data-aos="zoom-in">
             <div id="storeCarousel" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
-                @foreach ($sliders as $slider)
-                <li class="{{ $loop->first ? 'active' : '' }}" data-target="#storeCarousel" data-slide-to="{{ $loop->iteration - 1 }}"></li>
-                {{-- <li data-target="#storeCarousel" data-slide-to="1"></li>
-                <li data-target="#storeCarousel" data-slide-to="2"></li> --}}
-                @endforeach
+                <li class="active" data-target="#storeCarousel" data-slide-to="0"></li>
+                <li data-target="#storeCarousel" data-slide-to="1"></li>
+                <li data-target="#storeCarousel" data-slide-to="2"></li>
               </ol>
 
               <div class="carousel-inner">
-                @foreach ($sliders as $slider)
-                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                    @if ($slider->banner)
-                    <img src="/banner/{{ $slider->banner }}" alt="carousel Image" class="d-block w-100"/>
-                    @else
-                    <img src="{{ asset('images/banner1.jpg') }}" alt="carousel Image" class="d-block w-100"/>
-                    @endif
+                @forelse ($sliders as $slider)
+                <div class="carousel-item active">
+                  <img src="/banner/{{ $slider->banner }}" alt="carousel Image" class="d-block w-100"/>
                 </div>
-                @endforeach
+                @empty
+                <div class="col-12 text-center py-5" data-aos="fade-up" data-aos-delay="100">
+                    No Banners Found
+                </div>
+                @endforelse
 
                 {{-- <div class="carousel-item">
                   <img src="/images/banner2.jpg" alt="carousel Image" class="d-block w-100"/>
@@ -66,31 +64,6 @@ Home Page
             </div>
 
             @endforelse
-            {{-- <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="200">
-                <a href="#" class="component-categories d-block">
-                    <p class="categories-text">Pria</p>
-                </a>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="300">
-                <a href="#" class="component-categories d-block">
-                    <p class="categories-text">Wanita</p>
-                </a>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="400">
-                <a href="#" class="component-categories d-block">
-                    <p class="categories-text">Olahraga</p>
-                </a>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="500">
-                <a href="#" class="component-categories d-block">
-                    <p class="categories-text">Anak</p>
-                </a>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="600">
-                <a href="#" class="component-categories d-block">
-                    <p class="categories-text">SmartWatch</p>
-                </a>
-            </div> --}}
             </div>
         </div>
     </section>
@@ -105,10 +78,10 @@ Home Page
                         {{-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> --}}
                     </div>
                     <div class="col-sm-3">
-                        <input type="number" class="form-control" placeholder="Min Price" name="min_price" value="{{ request('min_price') }}">
+                        <input type="number" class="form-control" placeholder="Min" name="min_price" value="{{ request('min_price') }}">
                     </div>
                     {{-- <div class="col-sm-2">
-                        <input type="number" class="form-control" placeholder="Max" name="max_price" value="{{ request('max_price') }}">
+                        <input type="text" class="form-control" placeholder="Max" name="max_price" value="{{ request('max_price') }}">
                     </div> --}}
                     <div class="col-sm-3">
                         <button type="submit" class="btn btn-primary">Terapkan</button>
@@ -121,29 +94,30 @@ Home Page
       <div class="container">
         <div class="row">
           <div class="col-12" data-aos="fade-up">
-            <h5>New Products</h5>
+            <h5>Products</h5>
           </div>
         </div>
         <div class="row">
             @php $increamentproducts @endphp
-            {{-- @foreach ($products as $product) --}}
-            @if ($approvedProducts->isEmpty())
-                <p>Tidak ada produk yang tersedia saat ini.</p>
+            @if ($filterProducts->isEmpty())
+                <p>Tidak ada produk yang cocok dengan filter yang diterapkan.</p>
             @else
-            @foreach ($approvedProducts as $product)
+            @foreach ($filterProducts as $filter)
             <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-              <a href="{{ route('detail', $product->id) }}" class="component-products d-block">
-                <div class="products-thumbnail">
-                  <div class="products-image" style="background-image: url('/photos/{{ $product->galleries->photos }}');"></div>
-                </div>
-                <div class="products-text">{{ $product->name }}</div>
-                <div class="products-price">{{ $product->price }}</div>
-              </a>
+                <a href="{{ route('detail', $filter->id) }}" class="component-products d-block">
+                    <div class="products-thumbnail">
+                    <div class="products-image" style="background-image: url('/photos/{{ $filter->galleries->photos }}');"></div>
+                    </div>
+                    <div class="products-text">{{ $filter->name }}</div>
+                    <div class="products-price">{{ $filter->price }}</div>
+                </a>
             </div>
             @endforeach
+
             @endif
         </div>
       </div>
     </section>
   </div>
+
 @endsection

@@ -1,7 +1,11 @@
 @extends('layouts.dashboard-main')
 
 @section('title')
-User Pages
+Gallery Pages
+@endsection
+
+@section('breadchumb')
+Gallery Product
 @endsection
 
 @section('content')

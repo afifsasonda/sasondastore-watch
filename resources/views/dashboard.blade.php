@@ -4,6 +4,10 @@
 Dashboard Page
 @endsection
 
+@section('breadchumb')
+Dashboard
+@endsection
+
 @section('content')
 <!-- content dashboard -->
 <div class="container-fluid py-4">
@@ -14,9 +18,9 @@ Dashboard Page
             <div class="row">
               <div class="col-8">
                 <div class="numbers">
-                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Revenue</p>
+                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Product</p>
                   <h5 class="font-weight-bolder">
-                    $53,000
+                    {{ $productsCount }}
                   </h5>
                 </div>
               </div>
@@ -37,7 +41,7 @@ Dashboard Page
                 <div class="numbers">
                   <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
                   <h5 class="font-weight-bolder">
-                    2,300
+                    {{ $userCount }}
                   </h5>
                 </div>
               </div>
@@ -56,9 +60,9 @@ Dashboard Page
             <div class="row">
               <div class="col-8">
                 <div class="numbers">
-                  <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Gallery</p>
                   <h5 class="font-weight-bolder">
-                    +3,462
+                    {{ $galleriesCount }}
                   </h5>
                 </div>
               </div>

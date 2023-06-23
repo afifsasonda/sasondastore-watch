@@ -23,6 +23,9 @@
           <li class="nav-item">
             <a href="{{ route('categories') }}" class="nav-link">Categories</a>
           </li>
+          <li class="nav-item">
+            <a href="{{ url('/about') }}" class="nav-link">About</a>
+          </li>
           @auth
           <li class="nav-item">
             <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>

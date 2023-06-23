@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductGallery;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 use Illuminate\Http\Request\Admin\ProductRequest;
@@ -108,7 +109,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|min:3',
             'price' => 'required|numeric',
-            'description' => 'required|max:200',
+            'description' => 'required',
             'categories_id' => 'required',
             'status' => 'required'
         ]);
@@ -127,6 +128,32 @@ class ProductController extends Controller
         return redirect('/product')->with('Data berhasil diUpdate!');
 
     }
+
+    public function filter(Request $request){
+        $categories = Category::take(6)->get();
+        // $products = Product::with('galleries')->take(12)->get();
+        $sliders = Slider::take(3)->get();
+        $galleries = ProductGallery::all();
+
+        $query = Product::query();
+
+        // filter berdasarkan nama
+        if($request->has('name')){
+            $query->where('name','like','%'.$request->input('name').'%');
+        }
+        if($request->has('min_price')){
+            $query->where('price', '>=', $request->input('min_price'));
+        }
+        // if($request->has('max_price')){
+        //     $query->where('price', '<=', $request->input('max_price'));
+        // }
+
+
+        $filterProducts = $query->get();
+
+        return view('/filter',compact('filterProducts','galleries','sliders','categories'));
+    }
+
 
     public function delete($id){
        $products = Product::find($id)->delete();

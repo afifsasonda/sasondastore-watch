@@ -43,7 +43,7 @@ class UserController extends Controller
             'email' => 'required',
             'roles' => 'required',
             'avatar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
-            'alamat' => 'required|max:200',
+            'alamat' => 'required',
             'password' => 'required|min:6|max:15'
         ]);
 
@@ -107,8 +107,8 @@ class UserController extends Controller
             'email' => 'required',
             'roles' => 'required',
             'avatar' => 'required|image|mimes:png,jpg,jpeg|max:2048',
-            'alamat' => 'required|max:200',
-            'password' => 'required|min:6|max:15'
+            'alamat' => 'required',
+            'password' => 'required|min:6'
         ]);
 
         $users = User::where('id', $request->id)->first();
@@ -124,13 +124,10 @@ class UserController extends Controller
         }
 
         $users->update([
-            'avatar' => $profileImage
-        ]);
-
-        $users->update([
             'name' =>$request->name,
             'email' => $request->email,
             'roles'=>$request->roles,
+            'avatar' => $profileImage,
             'alamat'=>$request->alamat,
             'password'=>Hash::make($request->password)
         ]);

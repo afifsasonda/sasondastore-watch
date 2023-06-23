@@ -1,21 +1,20 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\Admin\DashboardTableUserController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DashboardTable;
 use App\Http\Controllers\DashboardTableController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginPageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductGalleryController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterPageController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\SuppoDashboardTableController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +29,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/filter',[ProductController::class,'filter']);
+Route::get('/about',[AboutController::class,'index']);
+
 Route::get('/categories',[CategoryController::class,'index'])->name('categories');
 Route::get('/detail/{id}',[DetailController::class,'index'])->name('detail');
 
@@ -60,8 +62,6 @@ Route::get('/product-gallery-create',[ProductGalleryController::class,'create'])
 Route::post('/product-gallery-create-post',[ProductGalleryController::class,'store']);
 Route::get('/product-gallery-delete/{id}',[ProductGalleryController::class,'delete']);
 
-// slider
-// Route::get('/slider'[Slider]);
 
 // login
 Route::get('/login',[LoginPageController::class,'index']);
@@ -74,23 +74,11 @@ Route::post('/register-post',[RegisterPageController::class,'store']);
 // logout
 Route::get('/logout',[LoginPageController::class,'logout']);
 
+// slider
+Route::get('/banner-create',[DashboardTableController::class,'create']);
+Route::post('/banner-create-post',[DashboardTableController::class,'store']);
+Route::get('/banner-delete/{id}',[DashboardTableController::class,'delete']);
 
-// Register
-// Route::get('/register/success',[RegisterController::class,'success'])->name('register-success');
-
-// product
-// Route::get('/dashboard/product-create',[ProductController::class,'create'])->name('create-product');
-// Route::post('/dashboard/product-create-post',[ProductController::class,'store'])->name('post-product');
-// Route::get('/dashboard/product-edit/{id}',[ProductController::class,'edit'])->name('edit-product');
-// Route::put('/dashboarad/product-update',[ProductController::class,'update'])->name('update-product');
-// Route::get('/dashboard/product-delete/{id}',[ProductController::class,'delete']);
-
-// Route::get('/dashboard',[DashboardController::class,'index']);
-
-// ->middleware('auth','admin')
-// Route::prefix('admin')
-//     ->namespace('Admin')
-//     ->group(function(){
-//         Route::get('/',[AdminDashboardController::class,'index'])->name('admin-dashboard');
-//     });
-
+// profile
+// Route::get('/profile',[ProfileController::class,'index']);
+// Route::put('/profile-update',[ProfileController::class,'update']);

@@ -67,7 +67,11 @@ Product Edit
                     </div>
                     <div class="mb-3">
                         <label>Status</label>
-                        <input type="text" class="form-control" name="status" value="Pending" value="{{ $products->status }}">
+                        <select name="status" class="form-control @error('status') is-invalid @enderror">
+                            <option>Pending</option>
+                            <option>Approved</option>
+                        {{-- <input type="text" class="form-control" name="status" value="Pending" value="{{ $products->status }}"> --}}
+                        </select>
                     </div>
                     <button type="submit" class="btn btn btn-primary" id="btn-submit">Save</button>
                     <button type="reset" class="btn btn-warning" name="reset">Reset</button>

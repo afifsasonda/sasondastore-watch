@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $users = User::all();
+        return view('profile.profile',compact('users'));
     }
 
     /**
@@ -56,7 +58,7 @@ class TestController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**

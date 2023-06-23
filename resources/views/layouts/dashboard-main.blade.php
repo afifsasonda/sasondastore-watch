@@ -45,14 +45,6 @@
         <li class="nav-item">
           <a class="nav-link " href="{{ url('/dashboard-table') }}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              {{-- <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i> --}}
-            </div>
-            <span class="nav-link-text ms-1">Slider</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="{{ url('/dashboard-table') }}">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Tables</span>
@@ -93,14 +85,6 @@
         @endif
 
         @if(Auth::user()->roles == 'Staff')
-        <li class="nav-item">
-            <a class="nav-link " href="{{ url('/dashboard-table') }}">
-              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                {{-- <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i> --}}
-              </div>
-              <span class="nav-link-text ms-1">Slider</span>
-            </a>
-          </li>
           <li class="nav-item">
             <a class="nav-link " href="{{ url('/dashboard-table') }}">
               <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -160,26 +144,23 @@
             <span class="nav-link-text ms-1">Gallery Product</span>
           </a>
         </li>
-        <li class="nav-item">
-                <a class="nav-link " href="{{ url('/logout') }}">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                      <i class="ni ni-collection text-info text-sm opacity-10"></i>
-                      <span class="nav-link-text ms-1">Logout</span>
-                    </div>
-                  </a>
-          </li>
-        @endif
-        {{-- <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
-        </li> --}}
         {{-- <li class="nav-item">
-          <a class="nav-link " href="../pages/profile.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Profile</span>
-          </a>
-        </li> --}}
+            <a class="nav-link " href="{{ url('/profile') }}">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Profile</span>
+            </a>
+          </li> --}}
+        <li>
+            <a class="nav-link " href="{{ url('/logout') }}">
+                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="ni ni-collection text-info text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Logout</span>
+            </a>
+        </li>
+        @endif
       </ul>
     </div>
   </aside>
@@ -190,9 +171,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">@yield('breadchumb')</li>
           </ol>
-          <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6>
+          <h6 class="font-weight-bolder text-white mb-0">@yield('breadchumb')</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -204,7 +185,7 @@
           {{-- profile --}}
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+              <a href="/" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <!-- <span class="d-sm-inline d-none">Sign In</span> -->
                 <!-- nama -->
@@ -249,7 +230,7 @@
                   <a href="#" class="nav-link text-muted">Blog</a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                  <a href="#" class="nav-link pe-0 text-muted" target="_blank">License</a>
                 </li>
               </ul>
             </div>

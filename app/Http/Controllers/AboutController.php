@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Banner;
-use App\Models\Product;
-use App\Models\ProductGallery;
-use App\Models\Slider;
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class DashboardTableController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +14,10 @@ class DashboardTableController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::all();
-        $users = User::all();
-        $products = Product::with(['galleries','category'])->get();
-        $galleries = ProductGallery::all();
-        return view('dashboard-table',compact('users','products','galleries','sliders'));
+        $categories = Category::take(6)->get();
+        return view('about',compact('categories'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +25,7 @@ class DashboardTableController extends Controller
      */
     public function create()
     {
-        return view('slider.slider-create');
+        //
     }
 
     /**
@@ -42,32 +36,8 @@ class DashboardTableController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'banner' => 'required|image|mimes:png,jpg,jpeg|max:2048',
-            'name' => 'required|min:5'
-        ]);
-
-        $sliders = $request->all();
-
-        if ($banner = $request->file('banner')) {
-            $destinationPath = 'banner/';
-            $profileImage = date('YmdHis') . "." . $banner->getClientOriginalExtension();
-            $banner->move($destinationPath, $profileImage);
-            $sliders['banner'] = "$profileImage";
-        }
-
-        Slider::create([
-            'banner' => $profileImage,
-            'name' => $request->name
-        ]);
-
-        return redirect('/dashboard-table')->with('Success','Berhasil tambahkan banner');
+        //
     }
-    public function delete($id){
-        $sliders = Slider::find($id)->delete();
-
-         return redirect('/dashboard-table');
-     }
 
     /**
      * Display the specified resource.
@@ -77,7 +47,7 @@ class DashboardTableController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
